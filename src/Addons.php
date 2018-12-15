@@ -2,6 +2,7 @@
 
 namespace think;
 
+use app\common\library\addons\CommonAddons;
 use think\Config;
 use think\View;
 
@@ -11,7 +12,7 @@ use think\View;
  * @author Byron Sampson <xiaobo.sun@qq.com>
  * @package think\addons
  */
-abstract class Addons
+abstract class Addons extends CommonAddons
 {
 
     // 视图实例对象
@@ -53,6 +54,10 @@ abstract class Addons
      */
     final public function getInfo($name = '')
     {
+        $info = parent::getInfo($name);
+        if($info){
+            return $info;
+        }
         if (empty($name)) {
             $name = $this->getName();
         }
@@ -77,6 +82,10 @@ abstract class Addons
      */
     final public function getConfig($name = '')
     {
+        $config = parent::getConfig($name);
+        if($config){
+            return $config;
+        }
         if (empty($name)) {
             $name = $this->getName();
         }
@@ -105,6 +114,10 @@ abstract class Addons
      */
     final public function setConfig($name = '', $value = [])
     {
+        $config = parent::setConfig($name, $value);
+        if($config){
+            return $config;
+        }
         if (empty($name)) {
             $name = $this->getName();
         }
@@ -122,6 +135,10 @@ abstract class Addons
      */
     final public function setInfo($name = '', $value = [])
     {
+        $info = parent::setInfo($name, $value);
+        if($info){
+            return $info;
+        }
         if (empty($name)) {
             $name = $this->getName();
         }
@@ -138,6 +155,10 @@ abstract class Addons
      */
     final public function getFullConfig($name = '')
     {
+        $fullConfigArr = parent::getFullConfig($name);
+        if($fullConfigArr){
+            return $fullConfigArr;
+        }
         $fullConfigArr = [];
         if (empty($name)) {
             $name = $this->getName();

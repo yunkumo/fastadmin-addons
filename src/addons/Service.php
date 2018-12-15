@@ -2,6 +2,7 @@
 
 namespace think\addons;
 
+use app\common\library\addons\CommonService;
 use fast\Http;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -13,7 +14,7 @@ use ZipArchive;
  * 插件服务
  * @package think\addons
  */
-class Service
+class Service extends CommonService
 {
 
     /**
