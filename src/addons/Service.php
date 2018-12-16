@@ -206,6 +206,9 @@ class Service extends CommonService
      */
     public static function refresh()
     {
+        if(parent::refresh()) {
+            return;
+        }
         //刷新addons.js
         $addons = get_addon_list();
         $bootstrapArr = [];
@@ -259,6 +262,9 @@ EOD;
      */
     public static function install($name, $force = false, $extend = [])
     {
+        if(parent::install($name, $force, $extend)) {
+            return;
+        }
         if (!$name || (is_dir(ADDON_PATH . $name) && !$force)) {
             throw new Exception('Addon already exists');
         }
@@ -335,6 +341,9 @@ EOD;
      */
     public static function uninstall($name, $force = false)
     {
+        if(parent::uninstall($name, $force)) {
+            return;
+        }
         if (!$name || !is_dir(ADDON_PATH . $name)) {
             throw new Exception('Addon not exists');
         }
@@ -384,6 +393,9 @@ EOD;
      */
     public static function enable($name, $force = false)
     {
+        if(parent::enable($name, $force)) {
+            return;
+        }
         if (!$name || !is_dir(ADDON_PATH . $name)) {
             throw new Exception('Addon not exists');
         }
@@ -440,6 +452,9 @@ EOD;
      */
     public static function disable($name, $force = false)
     {
+        if(parent::disable($name, $force)) {
+            return;
+        }
         if (!$name || !is_dir(ADDON_PATH . $name)) {
             throw new Exception('Addon not exists');
         }
@@ -492,6 +507,9 @@ EOD;
      */
     public static function upgrade($name, $extend = [])
     {
+        if(parent::upgrade($name, $extend)) {
+            return;
+        }
         $info = get_addon_info($name);
         if ($info['state']) {
             throw new Exception(__('Please disable addon first'));
